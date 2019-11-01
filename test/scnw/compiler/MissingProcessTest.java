@@ -45,10 +45,7 @@ public class MissingProcessTest extends ParsingTestCase {
             new Compiler().findProcess(module, psiManager);
             TestCase.fail();
         } catch (CompileException ex) {
-            TestCase.assertEquals(1, ex.getMessages().size());
-            TestCase.assertEquals("No process found", ex.getMessages().stream()
-                .findFirst().orElseThrow(() -> new IllegalStateException("no message"))
-                .getText());
+            TestCase.assertEquals("No process found", ex.getCompilationMessage().getText());
         }
     }
 

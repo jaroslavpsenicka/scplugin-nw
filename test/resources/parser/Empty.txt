@@ -10,4 +10,6 @@ SmartCase File(0,15)
         <empty list>
       SmartCaseTasksImpl(TASKS)(14,14)
         <empty list>
+      SmartCaseTestsImpl(TESTS)(14,14)
+        <empty list>
       PsiElement(SmartCaseTokenType.RIGHT_CURLY)('}')(14,15)

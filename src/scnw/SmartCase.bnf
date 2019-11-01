@@ -18,7 +18,7 @@ file ::= process | (comment process)
 comment ::= WHITESPACE? SINGLE_LINE_COMMENT (TEXT | WHITESPACE)* CRLF?
 process ::= WHITESPACE? PROCESS_KEYWORD WHITESPACE? IDENTIFIER processDefinition
 
-processDefinition ::= LEFT_CURLY WHITESPACE? attributes? WHITESPACE? tasks? WHITESPACE? RIGHT_CURLY
+processDefinition ::= LEFT_CURLY WHITESPACE? attributes? WHITESPACE? tasks? WHITESPACE? tests? WHITESPACE? RIGHT_CURLY
 attributes ::= (attribute | comment WHITESPACE? attribute)*
 tasks ::= (task | comment WHITESPACE? task)*
 
@@ -27,3 +27,6 @@ defaultValue ::= EQUALS WHITESPACE? STRING_VALUE WHITESPACE?
 
 task ::= WHITESPACE? TASK_KEYWORD WHITESPACE? IDENTIFIER WHITESPACE? FROM_KEYWORD WHITESPACE? FILE_REF WHITESPACE? SEMICOLON
 
+tests ::= (test | comment WHITESPACE? test)*
+test ::= WHITESPACE? TEST_KEYWORD WHITESPACE? IDENTIFIER testDefinition
+testDefinition ::= WHITESPACE? LEFT_CURLY WHITESPACE? RIGHT_CURLY

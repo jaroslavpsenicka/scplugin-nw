@@ -11,14 +11,14 @@ import static scnw.psi.Types.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import scnw.psi.*;
 
-public class SmartCaseProcessDefinitionImpl extends ASTWrapperPsiElement implements SmartCaseProcessDefinition {
+public class SmartCaseTestsImpl extends ASTWrapperPsiElement implements SmartCaseTests {
 
-  public SmartCaseProcessDefinitionImpl(@NotNull ASTNode node) {
+  public SmartCaseTestsImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull SmartCaseVisitor visitor) {
-    visitor.visitProcessDefinition(this);
+    visitor.visitTests(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -27,21 +27,15 @@ public class SmartCaseProcessDefinitionImpl extends ASTWrapperPsiElement impleme
   }
 
   @Override
-  @Nullable
-  public SmartCaseAttributes getAttributes() {
-    return findChildByClass(SmartCaseAttributes.class);
+  @NotNull
+  public List<SmartCaseComment> getCommentList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, SmartCaseComment.class);
   }
 
   @Override
-  @Nullable
-  public SmartCaseTasks getTasks() {
-    return findChildByClass(SmartCaseTasks.class);
-  }
-
-  @Override
-  @Nullable
-  public SmartCaseTests getTests() {
-    return findChildByClass(SmartCaseTests.class);
+  @NotNull
+  public List<SmartCaseTest> getTestList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, SmartCaseTest.class);
   }
 
 }

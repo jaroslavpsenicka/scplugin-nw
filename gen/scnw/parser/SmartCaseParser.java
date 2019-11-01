@@ -267,7 +267,7 @@ public class SmartCaseParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // LEFT_CURLY WHITESPACE? attributes? WHITESPACE? tasks? WHITESPACE? RIGHT_CURLY
+  // LEFT_CURLY WHITESPACE? attributes? WHITESPACE? tasks? WHITESPACE? tests? WHITESPACE? RIGHT_CURLY
   public static boolean processDefinition(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "processDefinition")) return false;
     if (!nextTokenIs(b, LEFT_CURLY)) return false;
@@ -279,6 +279,8 @@ public class SmartCaseParser implements PsiParser, LightPsiParser {
     r = r && processDefinition_3(b, l + 1);
     r = r && processDefinition_4(b, l + 1);
     r = r && processDefinition_5(b, l + 1);
+    r = r && processDefinition_6(b, l + 1);
+    r = r && processDefinition_7(b, l + 1);
     r = r && consumeToken(b, RIGHT_CURLY);
     exit_section_(b, m, PROCESS_DEFINITION, r);
     return r;
@@ -315,6 +317,20 @@ public class SmartCaseParser implements PsiParser, LightPsiParser {
   // WHITESPACE?
   private static boolean processDefinition_5(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "processDefinition_5")) return false;
+    consumeToken(b, WHITESPACE);
+    return true;
+  }
+
+  // tests?
+  private static boolean processDefinition_6(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "processDefinition_6")) return false;
+    tests(b, l + 1);
+    return true;
+  }
+
+  // WHITESPACE?
+  private static boolean processDefinition_7(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "processDefinition_7")) return false;
     consumeToken(b, WHITESPACE);
     return true;
   }
@@ -415,6 +431,109 @@ public class SmartCaseParser implements PsiParser, LightPsiParser {
   // WHITESPACE?
   private static boolean tasks_0_1_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "tasks_0_1_1")) return false;
+    consumeToken(b, WHITESPACE);
+    return true;
+  }
+
+  /* ********************************************************** */
+  // WHITESPACE? TEST_KEYWORD WHITESPACE? IDENTIFIER testDefinition
+  public static boolean test(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "test")) return false;
+    if (!nextTokenIs(b, "<test>", TEST_KEYWORD, WHITESPACE)) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, TEST, "<test>");
+    r = test_0(b, l + 1);
+    r = r && consumeToken(b, TEST_KEYWORD);
+    r = r && test_2(b, l + 1);
+    r = r && consumeToken(b, IDENTIFIER);
+    r = r && testDefinition(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // WHITESPACE?
+  private static boolean test_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "test_0")) return false;
+    consumeToken(b, WHITESPACE);
+    return true;
+  }
+
+  // WHITESPACE?
+  private static boolean test_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "test_2")) return false;
+    consumeToken(b, WHITESPACE);
+    return true;
+  }
+
+  /* ********************************************************** */
+  // WHITESPACE? LEFT_CURLY WHITESPACE? RIGHT_CURLY
+  public static boolean testDefinition(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "testDefinition")) return false;
+    if (!nextTokenIs(b, "<test definition>", LEFT_CURLY, WHITESPACE)) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, TEST_DEFINITION, "<test definition>");
+    r = testDefinition_0(b, l + 1);
+    r = r && consumeToken(b, LEFT_CURLY);
+    r = r && testDefinition_2(b, l + 1);
+    r = r && consumeToken(b, RIGHT_CURLY);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // WHITESPACE?
+  private static boolean testDefinition_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "testDefinition_0")) return false;
+    consumeToken(b, WHITESPACE);
+    return true;
+  }
+
+  // WHITESPACE?
+  private static boolean testDefinition_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "testDefinition_2")) return false;
+    consumeToken(b, WHITESPACE);
+    return true;
+  }
+
+  /* ********************************************************** */
+  // (test | comment WHITESPACE? test)*
+  public static boolean tests(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "tests")) return false;
+    Marker m = enter_section_(b, l, _NONE_, TESTS, "<tests>");
+    while (true) {
+      int c = current_position_(b);
+      if (!tests_0(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "tests", c)) break;
+    }
+    exit_section_(b, l, m, true, false, null);
+    return true;
+  }
+
+  // test | comment WHITESPACE? test
+  private static boolean tests_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "tests_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = test(b, l + 1);
+    if (!r) r = tests_0_1(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // comment WHITESPACE? test
+  private static boolean tests_0_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "tests_0_1")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = comment(b, l + 1);
+    r = r && tests_0_1_1(b, l + 1);
+    r = r && test(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // WHITESPACE?
+  private static boolean tests_0_1_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "tests_0_1_1")) return false;
     consumeToken(b, WHITESPACE);
     return true;
   }

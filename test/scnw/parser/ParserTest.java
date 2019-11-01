@@ -33,6 +33,9 @@ public class ParserTest extends ParsingTestCase {
   public void testMultipleTasks() {
     doTest(true);
   }
+  public void testEmptyTest() {
+    doTest(true);
+  }
   public void testComplex() {
     doTest(true);
   }

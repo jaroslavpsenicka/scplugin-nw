@@ -39,6 +39,18 @@ public class SmartCaseVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitTest(@NotNull SmartCaseTest o) {
+    visitPsiElement(o);
+  }
+
+  public void visitTestDefinition(@NotNull SmartCaseTestDefinition o) {
+    visitPsiElement(o);
+  }
+
+  public void visitTests(@NotNull SmartCaseTests o) {
+    visitPsiElement(o);
+  }
+
   public void visitPsiElement(@NotNull PsiElement o) {
     visitElement(o);
   }

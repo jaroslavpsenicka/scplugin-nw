@@ -49,10 +49,7 @@ public class DuplicateAttributeTest extends ParsingTestCase {
             new Compiler().findProcess(module, psiManager);
             TestCase.fail();
         } catch (CompileException ex) {
-            TestCase.assertEquals(1, ex.getMessages().size());
-            TestCase.assertEquals("Duplicate attribute: one", ex.getMessages().stream()
-                .findFirst().orElseThrow(() -> new IllegalStateException("no message"))
-                .getText());
+            TestCase.assertEquals("Duplicate attribute: one", ex.getCompilationMessage().getText());
         }
     }
 

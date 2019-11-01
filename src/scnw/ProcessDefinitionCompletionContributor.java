@@ -2,20 +2,18 @@ package scnw;
 
 import com.intellij.codeInsight.completion.*;
 import com.intellij.codeInsight.lookup.LookupElementBuilder;
-import com.intellij.patterns.PlatformPatterns;
 import com.intellij.patterns.PsiElementPattern;
 import com.intellij.psi.PsiElement;
 import com.intellij.util.ProcessingContext;
 import org.jetbrains.annotations.NotNull;
 import scnw.psi.SmartCaseProcessDefinition;
-import scnw.psi.Types;
 
 import static com.intellij.patterns.PlatformPatterns.psiElement;
 
 public class ProcessDefinitionCompletionContributor extends CompletionContributor {
 
     public ProcessDefinitionCompletionContributor() {
-        PsiElementPattern.Capture<PsiElement> place = psiElement();
+        PsiElementPattern.Capture<PsiElement> place = psiElement().withParent(SmartCaseProcessDefinition.class);
         extend(CompletionType.BASIC, place, new ProcessDefinitionProvider());
     }
 

@@ -16,6 +16,9 @@ public interface Types {
   IElementType PROCESS_DEFINITION = new SmartCaseElementType("PROCESS_DEFINITION");
   IElementType TASK = new SmartCaseElementType("TASK");
   IElementType TASKS = new SmartCaseElementType("TASKS");
+  IElementType TEST = new SmartCaseElementType("TEST");
+  IElementType TESTS = new SmartCaseElementType("TESTS");
+  IElementType TEST_DEFINITION = new SmartCaseElementType("TEST_DEFINITION");
 
   IElementType CRLF = new SmartCaseTokenType("CRLF");
   IElementType EQUALS = new SmartCaseTokenType("EQUALS");
@@ -29,6 +32,7 @@ public interface Types {
   IElementType SINGLE_LINE_COMMENT = new SmartCaseTokenType("SINGLE_LINE_COMMENT");
   IElementType STRING_VALUE = new SmartCaseTokenType("STRING_VALUE");
   IElementType TASK_KEYWORD = new SmartCaseTokenType("TASK_KEYWORD");
+  IElementType TEST_KEYWORD = new SmartCaseTokenType("TEST_KEYWORD");
   IElementType TEXT = new SmartCaseTokenType("TEXT");
   IElementType WHITESPACE = new SmartCaseTokenType("WHITESPACE");
 
@@ -58,6 +62,15 @@ public interface Types {
       }
       else if (type == TASKS) {
         return new SmartCaseTasksImpl(node);
+      }
+      else if (type == TEST) {
+        return new SmartCaseTestImpl(node);
+      }
+      else if (type == TESTS) {
+        return new SmartCaseTestsImpl(node);
+      }
+      else if (type == TEST_DEFINITION) {
+        return new SmartCaseTestDefinitionImpl(node);
       }
       throw new AssertionError("Unknown element type: " + type);
     }
