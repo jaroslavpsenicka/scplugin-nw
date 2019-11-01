@@ -1,0 +1,29 @@
+{
+  parserClass="scnw.parser.SmartCaseParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="SmartCase"
+  psiImplClassSuffix="Impl"
+  psiPackage="scnw.psi"
+  psiImplPackage="scnw.psi.impl"
+
+  elementTypeHolderClass="scnw.psi.Types"
+  elementTypeClass="scnw.psi.SmartCaseElementType"
+  tokenTypeClass="scnw.psi.SmartCaseTokenType"
+}
+
+file ::= process | (comment process)
+
+comment ::= WHITESPACE? SINGLE_LINE_COMMENT (TEXT | WHITESPACE)* CRLF?
+process ::= WHITESPACE? PROCESS_KEYWORD WHITESPACE? IDENTIFIER processDefinition
+
+processDefinition ::= LEFT_CURLY WHITESPACE? attributes? WHITESPACE? tasks? WHITESPACE? RIGHT_CURLY
+attributes ::= (attribute | comment WHITESPACE? attribute)*
+tasks ::= (task | comment WHITESPACE? task)*
+
+attribute ::= WHITESPACE? IDENTIFIER WHITESPACE? IDENTIFIER WHITESPACE? defaultValue? WHITESPACE? SEMICOLON
+defaultValue ::= EQUALS WHITESPACE? STRING_VALUE WHITESPACE?
+
+task ::= WHITESPACE? TASK_KEYWORD WHITESPACE? IDENTIFIER WHITESPACE? FROM_KEYWORD WHITESPACE? FILE_REF WHITESPACE? SEMICOLON
+

@@ -1,0 +1,18 @@
+SmartCase File(0,27)
+  SmartCaseCommentImpl(COMMENT)(0,10)
+    PsiElement(SmartCaseTokenType.SINGLE_LINE_COMMENT)('//')(0,2)
+    PsiElement(SmartCaseTokenType.TEXT)(' Comment')(2,10)
+  PsiWhiteSpace('\n')(10,11)
+  SmartCaseProcessImpl(PROCESS)(11,27)
+    PsiElement(SmartCaseTokenType.PROCESS_KEYWORD)('process')(11,18)
+    PsiWhiteSpace(' ')(18,19)
+    PsiElement(SmartCaseTokenType.IDENTIFIER)('Test')(19,23)
+    PsiWhiteSpace(' ')(23,24)
+    SmartCaseProcessDefinitionImpl(PROCESS_DEFINITION)(24,27)
+      PsiElement(SmartCaseTokenType.LEFT_CURLY)('{')(24,25)
+      PsiWhiteSpace('\n')(25,26)
+      SmartCaseAttributesImpl(ATTRIBUTES)(26,26)
+        <empty list>
+      SmartCaseTasksImpl(TASKS)(26,26)
+        <empty list>
+      PsiElement(SmartCaseTokenType.RIGHT_CURLY)('}')(26,27)

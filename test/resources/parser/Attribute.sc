@@ -1,0 +1,5 @@
+process Test {
+
+    String name;
+
+}

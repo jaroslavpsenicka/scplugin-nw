@@ -1,0 +1,45 @@
+<idea-plugin>
+  <id>scnw</id>
+  <name>SmartCaseNW Plugin</name>
+  <version>0.1</version>
+  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+  <description><![CDATA[
+      Enter short description for your plugin here.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <project-components>
+    <component>
+      <implementation-class>scnw.compiler.SmartCaseCompileTask</implementation-class>
+    </component>
+  </project-components>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <fileTypeFactory implementation="scnw.SmartCaseFileType$Factory"/>
+    <lang.parserDefinition language="SmartCaseProcessLanguage" implementationClass="scnw.SmartCaseParserDefinition"/>
+    <lang.syntaxHighlighterFactory language="SmartCaseProcessLanguage" implementationClass="scnw.SmartCaseSyntaxHighlighterFactory"/>
+    <colorSettingsPage implementation="scnw.SmartCaseColorSettingsPage"/>
+    <annotator language="SmartCaseProcessLanguage" implementationClass="scnw.SmartCaseAnnotator"/>
+    <completion.contributor language="SmartCaseProcessLanguage" implementationClass="scnw.ProcessDefinitionCompletionContributor"/>
+  </extensions>
+
+  <actions>
+  </actions>
+
+</idea-plugin>

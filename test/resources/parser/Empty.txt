@@ -1,0 +1,13 @@
+SmartCase File(0,15)
+  SmartCaseProcessImpl(PROCESS)(0,15)
+    PsiElement(SmartCaseTokenType.PROCESS_KEYWORD)('process')(0,7)
+    PsiWhiteSpace(' ')(7,8)
+    PsiElement(SmartCaseTokenType.IDENTIFIER)('Test')(8,12)
+    PsiWhiteSpace(' ')(12,13)
+    SmartCaseProcessDefinitionImpl(PROCESS_DEFINITION)(13,15)
+      PsiElement(SmartCaseTokenType.LEFT_CURLY)('{')(13,14)
+      SmartCaseAttributesImpl(ATTRIBUTES)(14,14)
+        <empty list>
+      SmartCaseTasksImpl(TASKS)(14,14)
+        <empty list>
+      PsiElement(SmartCaseTokenType.RIGHT_CURLY)('}')(14,15)
