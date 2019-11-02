@@ -18,12 +18,12 @@ public class SmartCaseRunner extends GenericProgramRunner {
     @NotNull
     @Override
     public String getRunnerId() {
-        return "XsltDebuggerRunner";
+        return "SmartCaseRunner";
     }
 
     @Override
     public boolean canRun(@NotNull String executorId, @NotNull RunProfile profile) {
-        return executorId.equals("Debug"); // && profile instanceof XsltRunConfiguration;
+        return executorId.equals("Debug") && profile instanceof SmartCaseRunConfiguration;
     }
 
     @Override

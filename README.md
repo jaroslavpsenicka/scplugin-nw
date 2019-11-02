@@ -1,9 +1,9 @@
-IDEA plugin pro podporu experimentálního procesního jazyka pro SmartCase.
+řévIDEA plugin pro podporu experimentálního procesního jazyka pro SmartCase.
 
 ## Základní struktura 
 Předpokládá se standardní struktura projektu vč. modulů, může být libivolný typ, testováno na Java modulech. 
 Modul obsahuje jeden nebo více souborů, primární je soubor s příponou .sc, který obsahuje definici procesu 
-(dříve .json soubor). Plugin zajišťuje překlad .sc syntaxe do .json, která je běžná pro SmartCase. kromě toho
+(dříve .json soubor). Plugin zajišťuje překlad .sc syntaxe do .json, která je běžná pro SmartCase. Kromě toho
 umožňuje i upload přeloženého souboru.
 
 ```java
@@ -11,6 +11,13 @@ process Test1 {
  ...   
 }
 ```
+
+Motivace pro plugin:
+* zpřehlednit zápis procesu
+* zmenšit velikost souborů
+* umožnit sdílení částí procesu
+* umožnit tvorbu unit-testů
+* umožnit ladění procesu
 
 ## Atributy
 Atributy se zapisují v Java-like syntaxi. Josu použity běžné datové typy, atributy mohou obsahovat komentáře - 

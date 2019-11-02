@@ -38,6 +38,7 @@
     <annotator language="SmartCaseProcessLanguage" implementationClass="scnw.SmartCaseAnnotator"/>
     <completion.contributor language="SmartCaseProcessLanguage" implementationClass="scnw.ProcessDefinitionCompletionContributor"/>
     <psi.referenceContributor language="SmartCaseProcessLanguage" implementation="scnw.TaskFileReferenceContributor"/>
+    <configurationType implementation="scnw.debugger.SmartCaseRunConfigurationType"/>
 
     <xdebugger.breakpointType implementation="scnw.debugger.SmartCaseBreakpointType"/>
     <programRunner implementation="scnw.debugger.SmartCaseRunner"/>
