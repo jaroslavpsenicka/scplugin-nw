@@ -76,7 +76,7 @@ public class SmartCaseRunConfiguration extends RunConfigurationBase {
     @Nullable
     @Override
     public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment executionEnvironment) throws ExecutionException {
-        return null;
+        return new SmartCaseRunnableState();
     }
 
     public static class ConfigurationState {

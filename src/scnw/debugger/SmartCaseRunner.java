@@ -12,6 +12,7 @@ import com.intellij.xdebugger.XDebugProcessStarter;
 import com.intellij.xdebugger.XDebugSession;
 import com.intellij.xdebugger.XDebuggerManager;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class SmartCaseRunner extends GenericProgramRunner {
 
@@ -27,12 +28,19 @@ public class SmartCaseRunner extends GenericProgramRunner {
     }
 
     @Override
-    protected RunContentDescriptor doExecute(@NotNull RunProfileState state, @NotNull ExecutionEnvironment env) throws ExecutionException {
+    public void execute(@NotNull ExecutionEnvironment environment, @Nullable Callback callback) throws ExecutionException {
+        super.execute(environment, callback);
+    }
+
+    @Override
+    protected RunContentDescriptor doExecute(@NotNull RunProfileState state, @NotNull ExecutionEnvironment env)
+        throws ExecutionException {
         FileDocumentManager.getInstance().saveAllDocuments();
         return createContentDescriptor(state, env);
     }
 
-    protected RunContentDescriptor createContentDescriptor(final RunProfileState runProfileState, final ExecutionEnvironment environment) throws ExecutionException {
+    protected RunContentDescriptor createContentDescriptor(final RunProfileState runProfileState,
+        final ExecutionEnvironment environment) throws ExecutionException {
         XDebuggerManager debugger = XDebuggerManager.getInstance(environment.getProject());
         XDebugSession debugSession = debugger.startSession(environment, new SmartCaseDebugStarter());
         return debugSession.getRunContentDescriptor();
