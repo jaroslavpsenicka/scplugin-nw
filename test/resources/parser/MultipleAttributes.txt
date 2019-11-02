@@ -22,6 +22,8 @@ SmartCase File(0,54)
       PsiWhiteSpace('\n\n')(51,53)
       SmartCaseTasksImpl(TASKS)(53,53)
         <empty list>
+      SmartCaseTransitionsImpl(TRANSITIONS)(53,53)
+        <empty list>
       SmartCaseTestsImpl(TESTS)(53,53)
         <empty list>
       PsiElement(SmartCaseTokenType.RIGHT_CURLY)('}')(53,54)

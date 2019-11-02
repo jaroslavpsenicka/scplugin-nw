@@ -44,4 +44,10 @@ public class SmartCaseProcessDefinitionImpl extends ASTWrapperPsiElement impleme
     return findChildByClass(SmartCaseTests.class);
   }
 
+  @Override
+  @Nullable
+  public SmartCaseTransitions getTransitions() {
+    return findChildByClass(SmartCaseTransitions.class);
+  }
+
 }

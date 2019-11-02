@@ -36,6 +36,9 @@ public class ParserTest extends ParsingTestCase {
   public void testEmptyTest() {
     doTest(true);
   }
+  public void testTransition()  {
+    doTest(true);
+  }
   public void testComplex() {
     doTest(true);
   }

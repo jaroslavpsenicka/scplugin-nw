@@ -16,4 +16,7 @@ public interface SmartCaseProcessDefinition extends PsiElement {
   @Nullable
   SmartCaseTests getTests();
 
+  @Nullable
+  SmartCaseTransitions getTransitions();
+
 }

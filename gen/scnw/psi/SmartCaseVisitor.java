@@ -51,6 +51,18 @@ public class SmartCaseVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitTransition(@NotNull SmartCaseTransition o) {
+    visitPsiElement(o);
+  }
+
+  public void visitTransitions(@NotNull SmartCaseTransitions o) {
+    visitPsiElement(o);
+  }
+
+  public void visitTrasitionDefinition(@NotNull SmartCaseTrasitionDefinition o) {
+    visitPsiElement(o);
+  }
+
   public void visitPsiElement(@NotNull PsiElement o) {
     visitElement(o);
   }

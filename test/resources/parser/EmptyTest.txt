@@ -11,6 +11,8 @@ SmartCase File(0,41)
         <empty list>
       SmartCaseTasksImpl(TASKS)(20,20)
         <empty list>
+      SmartCaseTransitionsImpl(TRANSITIONS)(20,20)
+        <empty list>
       SmartCaseTestsImpl(TESTS)(20,38)
         SmartCaseTestImpl(TEST)(20,38)
           PsiElement(SmartCaseTokenType.TEST_KEYWORD)('test')(20,24)

@@ -33,6 +33,7 @@ public class SmartCaseSyntaxHighlighter extends SyntaxHighlighterBase {
       return IDENTIFIER_KEYS;
     } else if (tokenType.equals(Types.PROCESS_KEYWORD) ||
       tokenType.equals(Types.TASK_KEYWORD) ||
+      tokenType.equals(Types.TEST_KEYWORD) ||
       tokenType.equals(Types.FROM_KEYWORD)) {
       return KEYWORD_KEYS;
     } else if (tokenType.equals(Types.TEXT) || tokenType.equals(Types.SINGLE_LINE_COMMENT)) {

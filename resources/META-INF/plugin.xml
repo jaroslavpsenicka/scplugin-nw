@@ -37,6 +37,11 @@
     <colorSettingsPage implementation="scnw.SmartCaseColorSettingsPage"/>
     <annotator language="SmartCaseProcessLanguage" implementationClass="scnw.SmartCaseAnnotator"/>
     <completion.contributor language="SmartCaseProcessLanguage" implementationClass="scnw.ProcessDefinitionCompletionContributor"/>
+    <psi.referenceContributor language="SmartCaseProcessLanguage" implementation="scnw.TaskFileReferenceContributor"/>
+
+    <xdebugger.breakpointType implementation="scnw.debugger.SmartCaseBreakpointType"/>
+    <programRunner implementation="scnw.debugger.SmartCaseRunner"/>
+
   </extensions>
 
   <actions>

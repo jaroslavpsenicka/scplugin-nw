@@ -21,6 +21,7 @@ LEFT_CURLY="{"
 RIGHT_CURLY="}"
 EQUALS="="
 SEMICOLON=";"
+ARROW="->"
 
 SINGLE_LINE_COMMENT="//"
 CHAR=[^\n\f\\]
@@ -28,6 +29,7 @@ PROCESS_KEYWORD="process"
 TASK_KEYWORD="task"
 FROM_KEYWORD="from"
 TEST_KEYWORD="test"
+TRANSITION_KEYWORD="transition"
 IDENTIFIER=[:jletter:][:jletterdigit:]*
 STRING_VALUE=\"[\w ]*\"
 FILE_REF=\"[\w\./]*\"
@@ -36,6 +38,7 @@ FILE_REF=\"[\w\./]*\"
 %state INNER_COMMENT
 %state PROCESS
 %state TEST
+%state TRANSITION
 
 %%
 
@@ -51,6 +54,10 @@ FILE_REF=\"[\w\./]*\"
 
 <PROCESS> {TEST_KEYWORD}                    { yybegin(TEST); return Types.TEST_KEYWORD; }
 <TEST>{RIGHT_CURLY}                         { yybegin(PROCESS); return Types.RIGHT_CURLY; }
+
+<PROCESS> {TRANSITION_KEYWORD}              { yybegin(TRANSITION); return Types.TRANSITION_KEYWORD; }
+<TRANSITION>{ARROW}                         { yybegin(TRANSITION); return Types.ARROW; }
+<TRANSITION>{RIGHT_CURLY}                   { yybegin(PROCESS); return Types.RIGHT_CURLY; }
 
 {EQUALS}                                    { return Types.EQUALS; }
 {SEMICOLON}                                 { return Types.SEMICOLON; }

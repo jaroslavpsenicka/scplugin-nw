@@ -24,4 +24,12 @@ public class PsiUtils {
         throw new IllegalArgumentException("Index " + idx + " does not exist in " + elements);
     }
 
+    public static String unwrap(String name) {
+        if (name != null && name.startsWith("\"") && name.endsWith("\"")) {
+            return name.substring(1, name.length()-1);
+        }
+
+        return name;
+    }
+
 }

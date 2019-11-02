@@ -19,7 +19,11 @@ public interface Types {
   IElementType TEST = new SmartCaseElementType("TEST");
   IElementType TESTS = new SmartCaseElementType("TESTS");
   IElementType TEST_DEFINITION = new SmartCaseElementType("TEST_DEFINITION");
+  IElementType TRANSITION = new SmartCaseElementType("TRANSITION");
+  IElementType TRANSITIONS = new SmartCaseElementType("TRANSITIONS");
+  IElementType TRASITION_DEFINITION = new SmartCaseElementType("TRASITION_DEFINITION");
 
+  IElementType ARROW = new SmartCaseTokenType("ARROW");
   IElementType CRLF = new SmartCaseTokenType("CRLF");
   IElementType EQUALS = new SmartCaseTokenType("EQUALS");
   IElementType FILE_REF = new SmartCaseTokenType("FILE_REF");
@@ -34,6 +38,7 @@ public interface Types {
   IElementType TASK_KEYWORD = new SmartCaseTokenType("TASK_KEYWORD");
   IElementType TEST_KEYWORD = new SmartCaseTokenType("TEST_KEYWORD");
   IElementType TEXT = new SmartCaseTokenType("TEXT");
+  IElementType TRANSITION_KEYWORD = new SmartCaseTokenType("TRANSITION_KEYWORD");
   IElementType WHITESPACE = new SmartCaseTokenType("WHITESPACE");
 
   class Factory {
@@ -71,6 +76,15 @@ public interface Types {
       }
       else if (type == TEST_DEFINITION) {
         return new SmartCaseTestDefinitionImpl(node);
+      }
+      else if (type == TRANSITION) {
+        return new SmartCaseTransitionImpl(node);
+      }
+      else if (type == TRANSITIONS) {
+        return new SmartCaseTransitionsImpl(node);
+      }
+      else if (type == TRASITION_DEFINITION) {
+        return new SmartCaseTrasitionDefinitionImpl(node);
       }
       throw new AssertionError("Unknown element type: " + type);
     }

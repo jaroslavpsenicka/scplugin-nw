@@ -1,4 +1,4 @@
-IDEA plugin pro podporu experimentálního procesního jazyka pro SmartCase
+IDEA plugin pro podporu experimentálního procesního jazyka pro SmartCase.
 
 ## Základní struktura 
 Předpokládá se standardní struktura projektu vč. modulů, může být libivolný typ, testováno na Java modulech. 

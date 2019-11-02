@@ -30,6 +30,8 @@ SmartCase File(0,86)
           PsiElement(SmartCaseTokenType.FILE_REF)('"./task2.sc"')(70,82)
           PsiElement(SmartCaseTokenType.SEMICOLON)(';')(82,83)
       PsiWhiteSpace('\n\n')(83,85)
+      SmartCaseTransitionsImpl(TRANSITIONS)(85,85)
+        <empty list>
       SmartCaseTestsImpl(TESTS)(85,85)
         <empty list>
       PsiElement(SmartCaseTokenType.RIGHT_CURLY)('}')(85,86)

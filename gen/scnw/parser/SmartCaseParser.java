@@ -267,7 +267,7 @@ public class SmartCaseParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // LEFT_CURLY WHITESPACE? attributes? WHITESPACE? tasks? WHITESPACE? tests? WHITESPACE? RIGHT_CURLY
+  // LEFT_CURLY WHITESPACE? attributes? WHITESPACE? tasks? WHITESPACE? transitions? WHITESPACE? tests? WHITESPACE? RIGHT_CURLY
   public static boolean processDefinition(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "processDefinition")) return false;
     if (!nextTokenIs(b, LEFT_CURLY)) return false;
@@ -281,6 +281,8 @@ public class SmartCaseParser implements PsiParser, LightPsiParser {
     r = r && processDefinition_5(b, l + 1);
     r = r && processDefinition_6(b, l + 1);
     r = r && processDefinition_7(b, l + 1);
+    r = r && processDefinition_8(b, l + 1);
+    r = r && processDefinition_9(b, l + 1);
     r = r && consumeToken(b, RIGHT_CURLY);
     exit_section_(b, m, PROCESS_DEFINITION, r);
     return r;
@@ -321,16 +323,30 @@ public class SmartCaseParser implements PsiParser, LightPsiParser {
     return true;
   }
 
-  // tests?
+  // transitions?
   private static boolean processDefinition_6(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "processDefinition_6")) return false;
-    tests(b, l + 1);
+    transitions(b, l + 1);
     return true;
   }
 
   // WHITESPACE?
   private static boolean processDefinition_7(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "processDefinition_7")) return false;
+    consumeToken(b, WHITESPACE);
+    return true;
+  }
+
+  // tests?
+  private static boolean processDefinition_8(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "processDefinition_8")) return false;
+    tests(b, l + 1);
+    return true;
+  }
+
+  // WHITESPACE?
+  private static boolean processDefinition_9(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "processDefinition_9")) return false;
     consumeToken(b, WHITESPACE);
     return true;
   }
@@ -534,6 +550,127 @@ public class SmartCaseParser implements PsiParser, LightPsiParser {
   // WHITESPACE?
   private static boolean tests_0_1_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "tests_0_1_1")) return false;
+    consumeToken(b, WHITESPACE);
+    return true;
+  }
+
+  /* ********************************************************** */
+  // WHITESPACE? TRANSITION_KEYWORD WHITESPACE? IDENTIFIER WHITESPACE? ARROW WHITESPACE? IDENTIFIER trasitionDefinition
+  public static boolean transition(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "transition")) return false;
+    if (!nextTokenIs(b, "<transition>", TRANSITION_KEYWORD, WHITESPACE)) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, TRANSITION, "<transition>");
+    r = transition_0(b, l + 1);
+    r = r && consumeToken(b, TRANSITION_KEYWORD);
+    r = r && transition_2(b, l + 1);
+    r = r && consumeToken(b, IDENTIFIER);
+    r = r && transition_4(b, l + 1);
+    r = r && consumeToken(b, ARROW);
+    r = r && transition_6(b, l + 1);
+    r = r && consumeToken(b, IDENTIFIER);
+    r = r && trasitionDefinition(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // WHITESPACE?
+  private static boolean transition_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "transition_0")) return false;
+    consumeToken(b, WHITESPACE);
+    return true;
+  }
+
+  // WHITESPACE?
+  private static boolean transition_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "transition_2")) return false;
+    consumeToken(b, WHITESPACE);
+    return true;
+  }
+
+  // WHITESPACE?
+  private static boolean transition_4(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "transition_4")) return false;
+    consumeToken(b, WHITESPACE);
+    return true;
+  }
+
+  // WHITESPACE?
+  private static boolean transition_6(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "transition_6")) return false;
+    consumeToken(b, WHITESPACE);
+    return true;
+  }
+
+  /* ********************************************************** */
+  // (transition | comment WHITESPACE? transition)*
+  public static boolean transitions(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "transitions")) return false;
+    Marker m = enter_section_(b, l, _NONE_, TRANSITIONS, "<transitions>");
+    while (true) {
+      int c = current_position_(b);
+      if (!transitions_0(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "transitions", c)) break;
+    }
+    exit_section_(b, l, m, true, false, null);
+    return true;
+  }
+
+  // transition | comment WHITESPACE? transition
+  private static boolean transitions_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "transitions_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = transition(b, l + 1);
+    if (!r) r = transitions_0_1(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // comment WHITESPACE? transition
+  private static boolean transitions_0_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "transitions_0_1")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = comment(b, l + 1);
+    r = r && transitions_0_1_1(b, l + 1);
+    r = r && transition(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // WHITESPACE?
+  private static boolean transitions_0_1_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "transitions_0_1_1")) return false;
+    consumeToken(b, WHITESPACE);
+    return true;
+  }
+
+  /* ********************************************************** */
+  // WHITESPACE? LEFT_CURLY WHITESPACE? RIGHT_CURLY
+  public static boolean trasitionDefinition(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "trasitionDefinition")) return false;
+    if (!nextTokenIs(b, "<trasition definition>", LEFT_CURLY, WHITESPACE)) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, TRASITION_DEFINITION, "<trasition definition>");
+    r = trasitionDefinition_0(b, l + 1);
+    r = r && consumeToken(b, LEFT_CURLY);
+    r = r && trasitionDefinition_2(b, l + 1);
+    r = r && consumeToken(b, RIGHT_CURLY);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // WHITESPACE?
+  private static boolean trasitionDefinition_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "trasitionDefinition_0")) return false;
+    consumeToken(b, WHITESPACE);
+    return true;
+  }
+
+  // WHITESPACE?
+  private static boolean trasitionDefinition_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "trasitionDefinition_2")) return false;
     consumeToken(b, WHITESPACE);
     return true;
   }
