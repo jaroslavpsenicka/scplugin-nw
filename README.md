@@ -1,4 +1,11 @@
-řévIDEA plugin pro podporu experimentálního procesního jazyka pro SmartCase.
+IDEA plugin pro podporu experimentálního procesního jazyka pro SmartCase.
+
+Motivace:
+* zpřehlednit zápis procesu
+* zmenšit velikost souborů
+* umožnit sdílení částí procesu
+* umožnit tvorbu unit-testů
+* umožnit ladění procesu
 
 ## Základní struktura 
 Předpokládá se standardní struktura projektu vč. modulů, může být libivolný typ, testováno na Java modulech. 
@@ -11,13 +18,6 @@ process Test1 {
  ...   
 }
 ```
-
-Motivace pro plugin:
-* zpřehlednit zápis procesu
-* zmenšit velikost souborů
-* umožnit sdílení částí procesu
-* umožnit tvorbu unit-testů
-* umožnit ladění procesu
 
 ## Atributy
 Atributy se zapisují v Java-like syntaxi. Josu použity běžné datové typy, atributy mohou obsahovat komentáře - 
