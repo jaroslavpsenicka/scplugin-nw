@@ -62,6 +62,7 @@ Testy jsou součástí zápisu procesu. Předpokládá se, že budou testy spí�
 * test transition mezi tasky/aktivitami
 * test volání služeb (automatické úkoly)
 * atd.
+
 Testy je možné spouštět v rámci vývoje, nejsou součástí výsledného .json souboru.
 Je možné do kódu testu umístit breakpoint a test krokovat, zkoumat/měnit proměnné apod.
 
