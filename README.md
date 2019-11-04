@@ -65,7 +65,7 @@ Je možné do kódu testu umístit breakpoint a test krokovat, zkoumat/měnit pr
 process Test1 {
 
    // Kontrola transition1 
-   test testStart2T1 {
+   test start2T1 {
      ...
    }
 }
