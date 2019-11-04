@@ -58,7 +58,7 @@ process Test1 {
 ```
 
 ## Testy
-Testy jsou součástí zápisu procesu. Předpokládá se, že budou testy spíš krátký a jejich syntaxe bude odpovídat testovaný oblasti:
+Testy jsou součástí zápisu procesu. Předpokládá se, že syntaxe testu bude odpovídat testovaný oblasti:
 * test transition mezi tasky/aktivitami
 * test volání služeb (automatické úkoly)
 * atd.
