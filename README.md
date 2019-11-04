@@ -58,13 +58,17 @@ process Test1 {
 ```
 
 ## Testy
-Testy jsou součástí zápisu procesu. Testy je možné spouštět v rámci vývoje, nejsou součástí výsledného .json souboru.
+Testy jsou součástí zápisu procesu. Předpokládá se, že budou testy spíš krátký a jejich syntaxe bude odpovídat testovaný oblasti:
+* test transition mezi tasky/aktivitami
+* test volání služeb (automatické úkoly)
+* atd.
+Testy je možné spouštět v rámci vývoje, nejsou součástí výsledného .json souboru.
 Je možné do kódu testu umístit breakpoint a test krokovat, zkoumat/měnit proměnné apod.
 
 ```java 
 process Test1 {
 
-   // Kontrola transition1 
+   // Kontrola transition 
    test start2T1 {
      ...
    }
